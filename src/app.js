@@ -8,12 +8,12 @@ const cache = {};
 const updateClock = () => {
     const [hour, minute] = getTime();
 
-    if (cache[hour] !== hour) {
-        cache[hour] = hour;
+    if (cache.hour !== hour) {
+        cache.hour = hour;
         hourElement.innerText = hour;
     }
-    if (cache[minute] !== minute) {
-        cache[minute] = minute;
+    if (cache.minute !== minute) {
+        cache.minute = minute;
         minuteElement.innerText = minute;
     }
 };
