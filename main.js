@@ -1,12 +1,23 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, screen } = require("electron");
+
+const windowWidth = 200;
+const windowHeight = 120;
 
 function createWindow() {
-    const win = new BrowserWindow({
-        width: 200,
-        height: 120,
+    const display = screen.getPrimaryDisplay();
+    const { width: displayWidth } = display.bounds;
+
+    const window = new BrowserWindow({
+        width: windowWidth,
+        height: windowHeight,
+        x: displayWidth - windowWidth,
+        y: 0,
+        frame: false,
+        alwaysOnTop: true,
+        isMovable: true,
     });
 
-    win.loadFile(__dirname + "/src/index.html");
+    window.loadFile(__dirname + "/src/index.html");
 }
 
 app.whenReady().then(() => {
